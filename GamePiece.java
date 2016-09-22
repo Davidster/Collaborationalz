@@ -1,20 +1,26 @@
 package game.battleShip;
 
 public class GamePiece {
-	protected char gridValue;
-	protected boolean alive, PC;
+	private PieceType type;	
+	private boolean alive;	
 	
-	public GamePiece(boolean PC, char gridValue){
-		if(PC == true){
-			this.PC = true;
-		}
-		alive = true;
-		this.gridValue = gridValue;
+	enum PieceType {
+		PlayerShip, EnemyShip, PlayerGrenade, EnemyGrenade	
 	}
 	
-	public boolean isPC(){
-		return this.PC;
-	}	
+	/*
+	 * Construvct a new game piecew
+	 * 
+	 * @param type the type of piece thats being added
+	 */
+	public GamePiece(PieceType type){
+		this.type = type;
+		alive = true;
+	}
+	
+	public PieceType getType(){
+		return type;
+	}
 	
 	public boolean isAlive(){
 		return this.alive;

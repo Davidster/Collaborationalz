@@ -4,13 +4,11 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Driver{
-	private int shipsAlive = 6, enemyShips = 6, grenadesAlive = 4, enemyGrenades;
-	
 	public static void main(String[] args){
 		Random randomGenerator = new Random();
 		
 		Map tileMap = new Map();
-		tileMap.initMap(tileMap);
+		tileMap.initMap();
 		
 		String input;
 		char x;
@@ -19,8 +17,8 @@ public class Driver{
 		Scanner kb = new Scanner(System.in);
 		
 		//initialize and print map
-		tileMap.initMap(tileMap);
-		tileMap.printMap(tileMap);
+		tileMap.initMap();
+		tileMap.printMap();
 		
 //		System.out.println((int)'A'-64);
 		
@@ -34,8 +32,7 @@ public class Driver{
 //			System.out.println("x = "+x);
 //			System.out.println("y = "+y);
 			
-			tileMap.place(y, x, tileMap, BattleShip.ship);
-			System.out.println();
+			tileMap.place(y, x, SHIP);
 		}
 		
 		for(int i = 0; i < 4; i++){
@@ -49,17 +46,17 @@ public class Driver{
 //			System.out.println("x = "+x);
 //			System.out.println("y = "+y);
 			
-			tileMap.place(y, x, tileMap, Grenade.grenade);
+			tileMap.place(y, x, Grenade.grenade);
 			System.out.println();
 			
 		}
 		
 		for(int i = 0; i < 6; i++){
 
-			tileMap.place(randomGenerator.nextInt(9), randomGenerator.nextInt(9), tileMap, BattleShip.ship);
+			tileMap.place(randomGenerator.nextInt(9), randomGenerator.nextInt(9), GamePiece.PieceType.EnemyShip);
 			System.out.println();
 		}
-		tileMap.printMap(tileMap);
+		tileMap.printMap();
 		
 		kb.close();
 	}
