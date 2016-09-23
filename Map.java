@@ -130,4 +130,38 @@ public class Map {
 		}
 		place(0, 0, 'X');
 	}
+
+	public void placeAlternate(int row, char collumn, GamePiece obj){
+		if(row < 0){
+			row = 0;
+		}
+		int collumnIndex = ((int) collumn)-65;
+		
+		System.out.println("collumnIndex = "+collumnIndex);
+		System.out.println("row = "+row);
+		System.out.println();
+		
+		if(row < 1 || row > 8 || collumnIndex < 0 || collumnIndex > 7 || getGamePiece(row-1, collumnIndex) != null){
+
+
+			if(getGamePiece(row-1, collumnIndex) != null)
+				System.out.println("Sorry, coordinates already used. Try again.");
+			else
+				System.out.println("Sorry, coordinates outside grid. Try again.");
+			
+			@SuppressWarnings("resource")
+			Scanner kb = new Scanner(System.in);
+			
+			String input = kb.next();
+			
+			collumn = input.charAt(0);
+			row = input.charAt(1)-48;
+			
+			place(row-1, collumn, obj);
+		}
+		
+		collumnIndex = ((int) collumn)-65;
+		
+		place(row-1, collumnIndex, obj);
+	}
 }
