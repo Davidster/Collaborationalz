@@ -3,9 +3,14 @@ package game.battleShip;
 import java.util.Scanner;
 import java.util.Random;
 
-public class Driver{
+public class Driver extends Map{
 	public static void main(String[] args){
 		Random randomGenerator = new Random();
+		
+		GamePiece playerShip = new GamePiece("PlayerShip");
+		GamePiece playerGrenade = new GamePiece("PlayerGrenade");
+		GamePiece enemyShip = new GamePiece("EnemyShip");
+		GamePiece enemyGrenade = new GamePiece("EnemyGrenade");
 		
 		Map tileMap = new Map();
 		tileMap.initMap();
@@ -29,10 +34,12 @@ public class Driver{
 			x = input.charAt(0);
 			y = input.charAt(1)-48;
 			
-//			System.out.println("x = "+x);
-//			System.out.println("y = "+y);
+			System.out.println("x = "+x);
+			System.out.println("y = "+y);
 			
-			tileMap.place(y, x, GamePiece.PieceType.PlayerShip);
+			tileMap.place(y, x, playerShip);
+			
+			System.out.println();
 		}
 		
 		for(int i = 0; i < 4; i++){
@@ -46,16 +53,37 @@ public class Driver{
 //			System.out.println("x = "+x);
 //			System.out.println("y = "+y);
 			
-			tileMap.place(y, x, GamePiece.PieceType.PlayerGrenade);
-			System.out.println();
+			tileMap.place(y, x, playerGrenade);
 			
+			System.out.println();
 		}
 		
+		tileMap.printMap();
+		
+		int randomRow = 0, randomCollumn = 0;
+		
 		for(int i = 0; i < 6; i++){
-
-			tileMap.place(randomGenerator.nextInt(9), randomGenerator.nextInt(9), GamePiece.PieceType.EnemyShip);
+			do{
+				randomRow = randomGenerator.nextInt(8);
+				randomCollumn = randomGenerator.nextInt(8);
+				
+				tileMap.place(randomRow, randomCollumn, enemyShip);
+			}while(tileMap.exists(randomRow, randomCollumn));
+			
 			System.out.println();
 		}
+		
+		for(int i = 0; i < 4; i++){
+			do{
+				randomRow = randomGenerator.nextInt(8);
+				randomCollumn = randomGenerator.nextInt(8);
+				
+				tileMap.place(randomRow, randomCollumn, enemyShip);
+			}while(tileMap.exists(randomRow, randomCollumn));
+			
+			System.out.println();
+		}
+		
 		tileMap.printMap();
 		
 		kb.close();
