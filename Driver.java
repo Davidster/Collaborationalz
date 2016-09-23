@@ -32,7 +32,7 @@ public class Driver{
 //			System.out.println("x = "+x);
 //			System.out.println("y = "+y);
 			
-			tileMap.place(y, x, SHIP);
+			tileMap.place(y, x, GamePiece.PieceType.PlayerShip);
 		}
 		
 		for(int i = 0; i < 4; i++){
@@ -46,7 +46,7 @@ public class Driver{
 //			System.out.println("x = "+x);
 //			System.out.println("y = "+y);
 			
-			tileMap.place(y, x, Grenade.grenade);
+			tileMap.place(y, x, GamePiece.PieceType.PlayerGrenade);
 			System.out.println();
 			
 		}

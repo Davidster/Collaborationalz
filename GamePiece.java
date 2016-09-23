@@ -9,7 +9,7 @@ public class GamePiece {
 	}
 	
 	/*
-	 * Construvct a new game piecew
+	 * Construct a new game piece
 	 * 
 	 * @param type the type of piece thats being added
 	 */

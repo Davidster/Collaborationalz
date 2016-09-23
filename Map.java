@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Map {
 	GamePiece[][] tileMap;
+	char[][] displayedTileMap;
 	private int shipsAlive, enemyShips, grenadesAlive, enemyGrenades;
 	private final int STARTING_SHIPS = 6, STARTING_GRENADES =4;
 	
@@ -23,7 +24,7 @@ public class Map {
 		return tileMap[index].length;
 	}
 	
-	public void place(int i, int j, GamePiece input){
+	public void place(int i, int j, GamePiece.PieceType input){
 		tileMap[i][j] = input;
 	}
 	
@@ -49,7 +50,7 @@ public class Map {
 			
 			place(row, collumn, obj);
 		}
-		else if(getChar(row, collumnIndex) != '_'){
+		else if(getGamePiece(row, collumnIndex) != null){
 			System.out.println("Sorry, coordinates already used. Try again.");
 			
 			@SuppressWarnings("resource")
@@ -64,14 +65,14 @@ public class Map {
 		place(row, collumnIndex, obj);
 	}
 	
-	public GamePiece getChar(int row, int collumn){
+	public GamePiece getGamePiece(int row, int collumn){
 		return tileMap[row][collumn];
 	}
 	
 	public void printMap(){
 		for(int i = 0; i < getLength(); i++){
 			for(int j = 0; j < getLength(i); j++){
-				System.out.print(getChar(i, j)+"  ");
+				System.out.print(getGamePiece(i, j)+"  ");
 			}
 			System.out.println();
 		}
@@ -94,7 +95,7 @@ public class Map {
 					ctr++;
 				}
 				else{
-					place(i, j, '_');
+					place(i, j, null);
 				}
 			}
 			
