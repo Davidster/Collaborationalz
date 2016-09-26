@@ -2,7 +2,7 @@ package game.battleShip;
 
 public class GamePiece {
 //	private PieceType type;	
-	private boolean alive;
+	private boolean alive, called;
 	private char displayValue;
 	
 //	enum PieceType {
@@ -17,16 +17,19 @@ public class GamePiece {
 	public GamePiece(String gamePiece){
 //		this.type = type;
 		alive = true;
+		called = false;
 		
 		//can be rewritten as switch case
 		if(gamePiece.equals("PlayerShip")){
-			displayValue = 'S';
-		}else if(gamePiece.equals("PlayerGrenade")){
-			displayValue = 'G';
-		}else if(gamePiece.equals("EnemyShip")){
 			displayValue = 's';
-		}else if(gamePiece.equals("EnemyGrenade")){
+		}else if(gamePiece.equals("PlayerGrenade")){
 			displayValue = 'g';
+		}else if(gamePiece.equals("EnemyShip")){
+			displayValue = 'S';
+		}else if(gamePiece.equals("EnemyGrenade")){
+			displayValue = 'G';
+		}else if(gamePiece.equals("void")){
+			displayValue = '*';
 		}
 	}
 	
@@ -41,5 +44,15 @@ public class GamePiece {
 	public char getDisplayValue(){
 		return this.displayValue;
 	}
-
+	
+	public void setDisplayValue(char displayValue){
+		this.displayValue = displayValue;
+	}
+	
+	public boolean getCalled(){
+		return this.called;
+	}
+	public void setCalled(boolean input){
+		this.called = input;
+	}
 }
