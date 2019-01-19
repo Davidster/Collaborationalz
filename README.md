@@ -1,1 +1,3 @@
-READ ME! did u get this Peter? Push ur code to this repo fam
+# Collaborationalz
+
+Suh dude
