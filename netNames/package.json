@@ -9,6 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "promise-fs": "^2.0.1"
+    "cheerio": "^1.0.0-rc.2",
+    "cli-progress": "^2.1.1",
+    "promise-fs": "^2.0.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }
