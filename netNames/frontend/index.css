@@ -1,0 +1,40 @@
+#outputContainer {
+
+}
+
+#outputContainer > div {
+  margin: 16px;
+  padding: 24px;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+}
+
+.urlContainer {
+  padding: 16px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.pageTextContainer {
+  white-space: pre-wrap;
+  position: relative;
+}
+
+.pageTextContainer.textSliced:after {
+  position: absolute;
+  bottom: 0;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  content: "";
+  background: linear-gradient(
+    rgba(255,255,255, 0.75),
+    rgba(255,255,255, 0),
+    rgba(255,255,255, 0.75)
+  );
+  pointer-events: none; /* so the text is still selectable */
+}
+
+.highlighted {
+  background-color: yellow;
+}
