@@ -7,11 +7,13 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="elasticsearch.jquery.min.js"></script>
     <script src="index.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div id="searchBar">
-      <input id="inputQuery"/>
-      <button id="searchButton">Search</button>
+    <!-- Search form -->
+    <div id="searchBar" class="md-form active-cyan active-cyan-2 mb-3">
+      <input id="inputQuery" class="form-control" type="text" placeholder="Search" aria-label="Search">
     </div>
     <div id="outputContainer">
     </div>

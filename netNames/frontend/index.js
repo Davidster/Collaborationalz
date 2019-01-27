@@ -48,7 +48,6 @@ let handleSearch = async () => {
 
 $(document).ready(() => {
   (async () => {
-    $("#searchButton").on("click", handleSearch);
     $("#inputQuery").on('keyup', function (e) {
         if (e.keyCode == 13) {
             handleSearch();
