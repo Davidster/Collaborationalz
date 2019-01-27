@@ -3,11 +3,6 @@ const PAGES_INDEX = "pages";
 const RESULT_PAGE_SIZE = 10;
 const TEXT_PREVIEW_CHAR_LIMIT = 1000;
 
-const client = new $.es.Client({
-  host: esDomain,
-  apiVersion: "6.3"
-});
-
 let performSearch = async (query, offset = 0) => {
   try {
     let searchResponse = await $.get(`https://v2e3iircr2.execute-api.us-east-1.amazonaws.com/dev/search?query=${query}`);
@@ -36,7 +31,7 @@ let handleSearch = async () => {
     }
     $outputContainer.append(`
       <div>
-        <a href="${result.url}" class="urlContainer">${result.url}</a>
+        <a target="_blank" href="${result.url}" class="urlContainer">${result.url}</a>
         <div class="pageTextContainer ${textSliced ? "textSliced" : ""}">
           ${pageText}
         </div>
