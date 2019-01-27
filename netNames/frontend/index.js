@@ -1,4 +1,3 @@
-const esDomain = "search-flic-data-bttaxaq3fkwa5cppkdhru5oky4.us-east-1.es.amazonaws.com"; // David's ES domain
 const API_URL = "https://v2e3iircr2.execute-api.us-east-1.amazonaws.com/dev/search"
 const PAGES_INDEX = "pages";
 const RESULT_PAGE_SIZE = 10;
