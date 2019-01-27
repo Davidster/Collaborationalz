@@ -23,12 +23,12 @@ let handleSearch = async () => {
   results.forEach(result => {
     let pageText = result.highlightedPageText;
     let textSliced = false;
-    if(pageText.length > TEXT_PREVIEW_CHAR_LIMIT) {
-      textSliced = true;
-      let firstSearchTermIndex = pageText.indexOf(`<span class="highlighted">`);
-      let firstVisibleCharacterIndex = Math.max(firstSearchTermIndex - (TEXT_PREVIEW_CHAR_LIMIT / 2), 0);
-      pageText = pageText.slice(firstVisibleCharacterIndex, firstVisibleCharacterIndex + TEXT_PREVIEW_CHAR_LIMIT);
-    }
+    // if(pageText.length > TEXT_PREVIEW_CHAR_LIMIT) {
+    //   textSliced = true;
+    //   let firstSearchTermIndex = pageText.indexOf(`<span class="highlighted">`);
+    //   let firstVisibleCharacterIndex = Math.max(firstSearchTermIndex - (TEXT_PREVIEW_CHAR_LIMIT / 2), 0);
+    //   pageText = pageText.slice(firstVisibleCharacterIndex, firstVisibleCharacterIndex + TEXT_PREVIEW_CHAR_LIMIT);
+    // }
     $outputContainer.append(`
       <div>
         <a target="_blank" href="${result.url}" class="urlContainer">${result.url}</a>
