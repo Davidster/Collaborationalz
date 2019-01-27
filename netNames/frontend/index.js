@@ -1,4 +1,5 @@
 const esDomain = "search-flic-data-bttaxaq3fkwa5cppkdhru5oky4.us-east-1.es.amazonaws.com"; // David's ES domain
+const API_URL = "https://v2e3iircr2.execute-api.us-east-1.amazonaws.com/dev/search"
 const PAGES_INDEX = "pages";
 const RESULT_PAGE_SIZE = 10;
 const TEXT_PREVIEW_CHAR_LIMIT = 1000;
@@ -8,44 +9,12 @@ const client = new $.es.Client({
   apiVersion: "6.3"
 });
 
-String.prototype.replaceAll = function(search, replacement, flags = "g") {
-  var target = this;
-  return target.replace(new RegExp(search, flags), replacement);
-};
-
-let fixWhitespace = (string) => {
-  return string.replaceAll("\t","").replaceAll(/\n\s*\n\s*\n/,"\n\n");
-};
-
 let performSearch = async (query, offset = 0) => {
   try {
-    const response = await client.search({
-      index: PAGES_INDEX,
-      body: {
-        from: offset,
-        size: RESULT_PAGE_SIZE,
-        query: {
-          match: {
-            page_text: query
-          }
-        },
-        highlight : {
-          fields : {
-            page_text : {}
-          },
-          pre_tags: [ "<span class='highlighted'>" ],
-          post_tags: [ "</span>" ]
-        }
-      }
-    });
-    return {
-      total: response.hits.total,
-      items: response.hits.hits.map(hit => ({
-          url: hit._source.url,
-          pageText: hit.highlight.page_text.map(pageText => fixWhitespace(pageText)).join("\n")
-      }))
-    };
-  } catch (error) {
+    let searchResponse = await $.get(`https://v2e3iircr2.execute-api.us-east-1.amazonaws.com/dev/search?query=${query}`);
+    console.log(searchResponse);
+    return searchResponse;
+   } catch (error) {
     console.log("Search error:", error);
   }
 };
@@ -58,7 +27,7 @@ let handleSearch = async () => {
   $outputContainer.empty();
   $outputContainer.append(`<div>Search returned ${searchResponse.total} results.</div>`);
   results.forEach(result => {
-    let pageText = result.pageText;
+    let pageText = result.highlightedPageText;
     let textSliced = false;
     if(pageText.length > TEXT_PREVIEW_CHAR_LIMIT) {
       textSliced = true;
