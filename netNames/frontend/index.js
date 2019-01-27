@@ -50,7 +50,7 @@ let performSearch = async (query, offset = 0) => {
   }
 };
 
-let onSearchButtonClick = async () => {
+let handleSearch = async () => {
   let searchQuery = $("#inputQuery").val();
   let searchResponse = await performSearch(searchQuery);
   let results = searchResponse.items;
@@ -79,6 +79,11 @@ let onSearchButtonClick = async () => {
 
 $(document).ready(() => {
   (async () => {
-    $("#searchButton").on("click", onSearchButtonClick);
+    $("#searchButton").on("click", handleSearch);
+    $("#inputQuery").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            handleSearch();
+        }
+    });
   })();
 });
