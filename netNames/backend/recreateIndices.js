@@ -34,6 +34,7 @@ let client = new elasticsearch.Client({
         }
       }
     });
+
     console.log("Successfully created pages index!", response);
   } catch (error) {
     console.log("Error creating pages index:", error.body.error.reason);

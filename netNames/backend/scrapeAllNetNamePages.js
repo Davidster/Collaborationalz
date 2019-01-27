@@ -4,8 +4,8 @@ const PROTOCOL = "http";
 const ENCS_DOMAIN = "users.encs.concordia.ca";
 const DB_FILE_NAME = "netNames.db";
 const DB_TABLE_NAME = "encspageinfo";
-const ALLOWED_EXTENSIONS = [ "", ".html", ".txt" ];
-const NET_NAME_BLACKLIST = [ "s_ranadi","c_harma", "to_hang", "w_anqi", "d_gadhiy" ];
+const ALLOWED_EXTENSIONS = [ "", ".html", ".md" ];
+const NET_NAME_BLACKLIST = [ "s_ranadi","c_harma", "to_hang", "w_anqi", "d_gadhiy", "a_rav" ];
 
 const path = require("path");
 const fs = require("promise-fs");
@@ -190,7 +190,8 @@ let checkIfRowExists = (db, pageUrl) => {
 
   // define variables
   // let allResults = [];
-  let workers = 4;
+  // set workers to 1 since encs sites don't allow more than one concurrent connection per client
+  let workers = 1;
   let netNamesPerWorker = Math.ceil(allNetNames.length / workers);
   let startTime = Date.now();
 
@@ -201,7 +202,7 @@ let checkIfRowExists = (db, pageUrl) => {
 
   progressBar.start(allNetNames.length, 0);
 
-  // split net names into segments, assign each segment to one work, run all workers concurrently
+  // split net names into segments, assign each segment to one worker, run all workers concurrently
   let workerPromises = [];
   for(let i = 0; i < workers; i++) {
     let netNames = allNetNames.slice(i * netNamesPerWorker, (i + 1) * netNamesPerWorker);

@@ -6,6 +6,7 @@ const path = require("path");
 
 (async () => {
   let allNetNames = [];
+  // A - Z
   for (var i = 97; i <= 122; i++) {
     let dirInfo = await fs.readdir(path.join(parentFolder, String.fromCharCode(i)));
     console.log(`dir: ${String.fromCharCode(i)}, regular files: ${dirInfo.filter(dir => (dir.split(".").length > 1))}`);
