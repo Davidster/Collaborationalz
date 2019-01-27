@@ -4,8 +4,8 @@ const PROTOCOL = "http";
 const ENCS_DOMAIN = "users.encs.concordia.ca";
 const DB_FILE_NAME = "netNames.db";
 const DB_TABLE_NAME = "encspageinfo";
-const ALLOWED_EXTENSIONS = [ "", ".html", ".md" ];
-const NET_NAME_BLACKLIST = [ "s_ranadi","c_harma", "to_hang", "w_anqi", "d_gadhiy", "a_rav" ];
+const ALLOWED_EXTENSIONS = [ "", ".html", ".md", ".txt"];
+const NET_NAME_BLACKLIST = [ "s_ranadi","c_harma", "to_hang", "w_anqi", "d_gadhiy", "a_rav", "p_p5", "p_pav"];
 
 const path = require("path");
 const fs = require("promise-fs");
